@@ -1,47 +1,70 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
+  <body>
     <div class="wrapper">
-      <HelloWorld msg="You did it!" />
+        <h1>Погода</h1>
+        <p> Погода в вашем городе</p> 
+        <input type="text" placeholder="Введите название города">
+        <br>
+        <button>Получить погоду</button>
+        <button name="btn2">Jytn</button>
     </div>
-  </header>
-
-  <main>
-    <TheWelcome />
-  </main>
+  </body>
 </template>
 
 <style scoped>
-header {
-  line-height: 1.5;
+.wrapper {
+  width: 900px;
+  height: 500px;
+  border-radius: 50px;
+  padding: 20px;
+  background: rgb(39, 39, 39);
+  text-align: center;
+  color: whitesmoke;
 }
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
+.wrapper h1{
+  margin-top: 5px;
+  font-size: 50px;
 }
 
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
+.wrapper p{
+  margin-top: 15px;
+  font-size: 30px;
+}
 
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
+.wrapper input{
+  margin-top: 30px;
+  width: 325px;
+  background:  transparent;
+  color:  white;
+  font-size: 25px;
+  padding: 5px 8px;
+  outline: none;
+}
+.wrapper input:focus{
+  border-color: rgba(148,187,233,1);
+}
+.wrapper button{
+  margin-top: 20px;
+  display: inline-block;
+  padding: 15px 25px;
+  font-size: 15px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background: rgb(63,94,251);
+  background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
+  border: none;
+  border-radius: 15px;
+  transition: transform 500ms ease;
+}
+.wrapper button:hover {
+  transform: scale(1.1) translateY(-5px);
 }
 </style>
