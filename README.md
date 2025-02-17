@@ -19,7 +19,7 @@
 
 1. **Клонируйте репозиторий**:
    ```bash
-   git clone [https://github.com/your-repo/weather-app.git](https://github.com/OtakuDocotor/Weather_By_City.git)
+   git clone https://github.com/OtakuDocotor/Weather_By_City.git
 2. **Настройте базу данных**:
    Убедитесь, что PostgreSQL установлен и запущен.
    Импортировать базу данных в **PostgreSQL** с помощью **pgAdmin 4** или консоли:
