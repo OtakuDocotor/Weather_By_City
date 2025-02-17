@@ -1,16 +1,15 @@
 <template>
   <div class="weather-app">
-    <h1>Погода в городе</h1>
+    <h1>Weather in the city</h1>
     <div class="input-section">
-      <input v-model="city" placeholder="Введите город" />
-      <button @click="getWeather">Получить погоду</button>
+      <input v-model="city" placeholder="Enter the city" />
+      <button @click="getWeather">Get Weather</button>
     </div>
 
     <div v-if="weatherData" class="weather-info">
-      <h2>Текущая погода в {{ weatherData._City }}</h2>
-      <p>Температура: {{ weatherData._Temperature }}°C</p>
-      <p>Описание: {{ weatherData._Description }}</p>
-      <p>Запрошено: {{ weatherData.requestedAt }}</p>
+      <h2>Current weather in  {{ weatherData._City }}</h2>
+      <p>Temperature: {{ weatherData._Temperature }}°C</p>
+      <p>Description: {{ weatherData._Description }}</p>
     </div>
 
     <div class="history-section">
@@ -38,7 +37,7 @@ export default {
     };
   },
   mounted() {
-    this.fetchHistory(); // Загружаем историю при монтировании компонента
+    this.fetchHistory(); 
   },
   methods: {
     getWeather() {
@@ -48,9 +47,9 @@ export default {
       }
       axios.get(`http://localhost:8080/weather/current?city=${this.city}`)
         .then(res => {
-          this.weatherData = res.data; // Сохраняем данные о погоде
-          this.fetchHistory(); // Загружаем историю
-          this.city = ''; // Очищаем поле ввода
+          this.weatherData = res.data; 
+          this.fetchHistory(); 
+          this.city = ''; 
         })
         .catch(err => {
           console.error('Ошибка получения погодных данных:', err);
@@ -61,7 +60,7 @@ export default {
     fetchHistory() {
       axios.get(`http://localhost:8080/weather/history`)
         .then(res => {
-          this.history = res.data; // Устанавливаем историю из ответа сервера
+          this.history = res.data;
         })
         .catch(err => {
           console.error('Ошибка получения истории запросов:', err);
@@ -79,7 +78,7 @@ export default {
   font-family: Arial, sans-serif;
   background-color: #f4f4f4; 
   border-radius: 8px; 
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Добавляем тень */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); 
 }
 
 .input-section {
@@ -90,66 +89,66 @@ input {
   padding: 10px;
   font-size: 16px;
   margin-right: 10px;
-  border: 1px solid #ccc; /* Добавляем границу */
-  border-radius: 4px; /* Скругление углов */
+  border: 1px solid #ccc; 
+  border-radius: 4px; 
 }
 
 input:focus {
-  border-color: #007bff; /* Синие границы при активном фокусе */
-  outline: none; /* Убираем стандартное обводку при фокусе */
+  border-color: #007bff; 
+  outline: none;
 }
 
 button {
   padding: 10px 20px;
   font-size: 16px;
   cursor: pointer;
-  border: none; /* Убираем стандартные границы */
-  background-color: #007bff; /* Основной цвет кнопки */
-  color: white; /* Цвет текста кнопки */
-  border-radius: 4px; /* Скругляем углы кнопки */
+  border: none; 
+  background-color: #007bff; 
+  color: white; 
+  border-radius: 4px; 
 }
 
 button:hover {
-  background-color: #0056b3; /* Тёмно-синий цвет при наведении */
+  background-color: #0056b3;
 }
 
 .weather-info {
   margin-bottom: 20px;
-  padding: 15px; /* Отступ внутри блока с информацией о погоде */
-  background-color: white; /* Фон для блока с информацией о погоде */
-  border-radius: 8px; /* Скругление углов */
+  padding: 15px; 
+  background-color: white; 
+  border-radius: 8px;
   
-  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1); /* Добавляем тень */
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
 }
 
 .history-section {
   margin-top: 20px;
-  background-color: white; /* Фон для блока с историей запросов */
-  border-radius: 8px; /* Скругление углов */
-  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1); /* Добавляем тень */
+  background-color: white; 
+  border-radius: 8px; 
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1); 
 }
 
 .history-title {
   padding-top: 20px;
-  margin-top: 10px; /* Отступ сверху, чтобы текст был ниже */
-  padding-left: 15px; /* Отступ слева для выравнивания */
+  margin-top: 10px; 
+  padding-left: 15px; 
 }
 
 .history-container {
-  max-height: 200px; /* Устанавливаем максимальную высоту для прокрутки */
-  overflow-y: auto; /* Добавляем вертикальную прокрутку */
+  max-height: 200px; 
+  overflow-y: auto; 
 }
 
 ul {
-  list-style-type: none; /* Убираем маркеры списка */
-  padding: 0; /* Убираем отступы */
+  list-style-type: none; 
+  padding: 0; 
 }
 
 li {
-  background: #f9f9f9; /* Цвет фона элемента списка */
-  margin: 5px 0; /* Отступы между элементами списка */
-  padding: 10px; /* Отступ внутри элемента списка */
-  border: 1px solid #ddd; /* Граница вокруг элемента списка */
-  border-radius: 4px; /* Скругление углов элементов списка */
+  background: #f9f9f9; 
+  margin: 5px 0; 
+  padding: 10px; 
+  border: 1px solid #ddd; 
+  border-radius: 4px; 
 }
 </style>

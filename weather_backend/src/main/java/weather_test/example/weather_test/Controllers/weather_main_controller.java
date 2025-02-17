@@ -9,6 +9,7 @@ import weather_test.example.weather_test.Service.WeatherService;
 import weather_test.example.weather_test.repo.forecast_repo;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -22,6 +23,9 @@ public class weather_main_controller {
     @Autowired
     private forecast_repo _Forecast_repo;
 
+    @Value("${api.key}")
+    private String _ApiKey;
+
     public weather_main_controller(WeatherService ws)
     {
         this.weatherService=ws;
@@ -34,7 +38,7 @@ public class weather_main_controller {
 
     @GetMapping("/current")
     public forecast_weather postMethodName(@RequestParam String city) {
-        forecast_weather res =weatherService.getWeatherByCity(city);
+        forecast_weather res =weatherService.getWeatherByCity(city,_ApiKey);
         _Forecast_repo.save(res);
         return res;
     }
