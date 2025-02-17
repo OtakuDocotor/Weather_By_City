@@ -17,8 +17,6 @@
 
 ## Настройка проекта
 
-### Backend
-
 1. **Клонируйте репозиторий**:
    ```bash
    git clone [https://github.com/your-repo/weather-app.git](https://github.com/OtakuDocotor/Weather_By_City.git)
