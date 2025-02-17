@@ -9,16 +9,18 @@ import weather_test.example.weather_test.Service.WeatherService;
 import weather_test.example.weather_test.repo.forecast_repo;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 
 
 @RestController
 @RequestMapping("/weather")
+@CrossOrigin(origins ="http://localhost:5173")
 public class weather_main_controller {
 
     private final WeatherService weatherService;
     @Autowired
-    private forecast_repo repo;
+    private forecast_repo _Forecast_repo;
 
     public weather_main_controller(WeatherService ws)
     {
@@ -33,8 +35,15 @@ public class weather_main_controller {
     @GetMapping("/current")
     public forecast_weather postMethodName(@RequestParam String city) {
         forecast_weather res =weatherService.getWeatherByCity(city);
-        repo.save(res);
+        _Forecast_repo.save(res);
         return res;
     }
+
+    @GetMapping("/history")
+    public Iterable<forecast_weather> getMethodName() {
+        Iterable<forecast_weather> res= _Forecast_repo.findAll();
+        return res;
+    }
+    
     
 }
